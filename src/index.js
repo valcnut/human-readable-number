@@ -13,19 +13,19 @@ module.exports = function toReadable (number) {
         return tenToTwenty[number - 10];
 
     } else if (number >= 20 && number < 100) {
-        return `${dozens[parseInt(number / 10)]} ${oneToTen[number % 10]}`.trim();
+        return `${dozens[Math.trunc(number / 10)]} ${oneToTen[number % 10]}`.trim();
 
     } else if (number === 100) {
         return 'one hundred';
 
     } else if (number > 100 && number % 100 < 10) {
-        return `${oneToTen[parseInt(number / 100)]} hundred ${oneToTen[number % 100]}`.trim(); 
+        return `${oneToTen[Math.trunc(number / 100)]} hundred ${oneToTen[number % 100]}`.trim(); 
 
     } else if (number > 100 && number % 100 < 20 && number % 100 >= 10) {
-        return `${oneToTen[parseInt(number / 100)]} hundred ${tenToTwenty[number % 10]}`.trim();
+        return `${oneToTen[Math.trunc(number / 100)]} hundred ${tenToTwenty[number % 10]}`.trim();
 
     } else if (number > 100 && number % 100 >= 20) {
-        return `${oneToTen[parseInt(number / 100)]} hundred ${dozens[String(number).charAt(1)]} ${oneToTen[number % 10]}`.trim();
+        return `${oneToTen[Math.trunc(number / 100)]} hundred ${dozens[String(number).charAt(1)]} ${oneToTen[number % 10]}`.trim();
     }
 }
 
